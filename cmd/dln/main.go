@@ -2,11 +2,22 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"io"
 	"os"
-	"strconv"
 )
+
+var errSyntax = errors.New("dln: line does not begin with a number")
+
+func nonil(err ...error) error {
+	for _, err := range err {
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
 
 func die(v interface{}) {
 	fmt.Fprintln(os.Stderr, v)
@@ -31,14 +42,13 @@ func main() {
 	if !s.Scan() {
 		return
 	}
-	prev, err := strconv.ParseUint(s.Text(), 10, 64)
-	if err != nil {
-		die(err)
+	var prev, cur int64
+	if n, err := fmt.Sscanf(s.Text(), "%d", &prev); err != nil || n != 1 {
+		die(nonil(err, errSyntax))
 	}
 	for s.Scan() {
-		cur, err := strconv.ParseUint(s.Text(), 10, 64)
-		if err != nil {
-			die(err)
+		if n, err := fmt.Sscanf(s.Text(), "%d", &cur); err != nil || n != 1 {
+			die(nonil(err, errSyntax))
 		}
 		fmt.Println(cur - prev)
 		prev = cur
