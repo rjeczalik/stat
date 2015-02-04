@@ -1,3 +1,6 @@
+// Command hist prints histogram for line-separated data points.
+//
+// TODO(rjeczalik): make sorting optional and disabled by default
 package main
 
 import (

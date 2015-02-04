@@ -3,7 +3,7 @@ stat [![Build Status](https://img.shields.io/travis/rjeczalik/stat/master.svg)](
 
 Statistics and time series toys for the command line.
 
-**Installation**
+*Installation*
 
 ```
 ~ $ go get github.com/rjeczalik/stat/cmd/...
@@ -11,9 +11,9 @@ Statistics and time series toys for the command line.
 
 ### cmd/dln
 
-Prints derivative of line-separated numbers.
+Prints derivative computed out of line-separated numbers.
 
-**Example usage**
+*Example usage*
 
 ```
 ~ $ curl -sS http://cdimage.ubuntu.com/daily-live/current/vivid-desktop-amd64.iso -o vivid-amd64.iso &
@@ -40,7 +40,9 @@ Prints derivative of line-separated numbers.
 
 ### cmd/hist
 
-**Example usage**
+Prints histogram for line-separated data points. It sorts the result set by the number of occurances in descending order.
+
+*Example usage*
 
 ```
 ~ $ log=https://gist.githubusercontent.com/rjeczalik/f18349ad629f07d19839/raw/b8089282fdd5a8ea8589fe33bc88cc6d29db7026/lazyvm.log

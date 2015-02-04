@@ -1,3 +1,4 @@
+// Command dln prints derivative computed out of line-separated numbers.
 package main
 
 import (
